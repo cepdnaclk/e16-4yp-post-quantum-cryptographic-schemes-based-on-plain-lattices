@@ -3,8 +3,8 @@ layout: home
 permalink: index.html
 
 # Please update this with your repository name and title
-repository-name: eYY-4yp-project-template
-title:
+repository-name: e16-4yp-post-quantum-cryptographic-schemes-based-on-plain-lattices
+title: Efficient Implementation of Post Quantum Cryptography Schemes Based on Plain Lattices
 ---
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
