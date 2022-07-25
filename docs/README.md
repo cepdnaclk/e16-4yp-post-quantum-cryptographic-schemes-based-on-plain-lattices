@@ -64,8 +64,8 @@ title: Efficient Implementation of Post Quantum Cryptography Schemes Based on Pl
 
 [//]: # ( NOTE: EDIT THIS LINKS WITH YOUR REPO DETAILS )
 
-- [Project Repository](https://github.com/cepdnaclk/repository-name)
-- [Project Page](https://cepdnaclk.github.io/repository-name)
+- [Project Repository](https://github.com/cepdnaclk/e16-4yp-post-quantum-cryptographic-schemes-based-on-plain-lattices)
+- [Project Page](https://cepdnaclk.github.io/e16-4yp-post-quantum-cryptographic-schemes-based-on-plain-lattices/)
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://eng.pdn.ac.lk/)
 
