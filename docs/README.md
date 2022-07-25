@@ -40,6 +40,8 @@ title: Efficient Implementation of Post Quantum Cryptography Schemes Based on Pl
 
 ## Abstract
 
+This project proposes the use of plain lattices with learning with errors problem to implement a cryptographic scheme which can run on classical computers and provides security against quantum based attacks. We are proposing key sizes for efficient operations and implement a lattice trapdoor function. Also we will improve current random oracle based model in to a standard model. 
+
 ## Related works
 
 ## Methodology
