@@ -46,7 +46,7 @@ This project proposes the use of plain lattices with learning with errors proble
 
 ## Methodology
 
-### Modular design
+#### Modular design
 
 - Encryption/decryption modules 
 - Random number generator module
@@ -54,7 +54,7 @@ This project proposes the use of plain lattices with learning with errors proble
 - File handler modules
 - Trapdoor function
 
-### Focus on security
+#### Focus on security
 - Apply provable security method 
 - Reasonable assumptions - LWE hardness
 - Mathematical justification
