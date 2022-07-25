@@ -46,6 +46,20 @@ This project proposes the use of plain lattices with learning with errors proble
 
 ## Methodology
 
+### Modular design
+
+- Encryption/decryption modules 
+- Random number generator module
+- Gaussian Sampler module
+- File handler modules
+- Trapdoor function
+
+### Focus on security
+- Apply provable security method 
+- Reasonable assumptions - LWE hardness
+- Mathematical justification
+
+
 ## Experiment Setup and Implementation
 
 ## Results and Analysis
