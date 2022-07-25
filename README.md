@@ -9,3 +9,13 @@ Shor’s algorithm for quantum computers, enables us to solve Integer Factorizat
 The aim of the project is implementing acryptographic scheme based on plain lattices and LWE principles which are resistent to attacks from quantum based computers.
 
 ## Team Members
+
+E/16/049, Harshana Bandara, [email](mailto:e16049@eng.pdn.ac.lk)
+E/16/134, Yasitha Herath, [email](mailto:e16134@eng.pdn.ac.lk) 
+E/16/388, Thushara Weerasundara, [email](mailto:e16388@eng.pdn.ac.lk) 
+
+## Supervisors
+
+- Dr. Qinyi Li, [email](mailto:qinyi.li@griffith.edu.au)
+- Dr. Janaka Alawathugoda, [email](mailto:alawatugoda@eng.pdn.ac.lk)
+- Prof. Roshan Ragel, [email](mailto:roshanr@eng.pdn.ac.lk)

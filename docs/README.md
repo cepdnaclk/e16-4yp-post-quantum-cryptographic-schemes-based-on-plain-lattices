@@ -14,15 +14,15 @@ title: Efficient Implementation of Post Quantum Cryptography Schemes Based on Pl
 
 #### Team
 
-- E/16/049, Harshana Bandara, [email](e16049@eng.pdn.ac.lk)
-- E/16/134, Yasitha Herath, [email](e16134@eng.pdn.ac.lk)
-- E/16/388, Thushara Weerasundara, [email](e16388@eng.pdn.ac.lk)
+- E/16/049, Harshana Bandara, [email](mailto:e16049@eng.pdn.ac.lk)
+- E/16/134, Yasitha Herath, [email](mailto:e16134@eng.pdn.ac.lk)
+- E/16/388, Thushara Weerasundara, [email](mailto:e16388@eng.pdn.ac.lk) 
 
 #### Supervisors
 
-- Dr. Qinyi Li, [email](qinyi.li@griffith.edu.au)
-- Dr. Janaka Alawathugoda, [email](alawatugoda@eng.pdn.ac.lk)
-- Prof. Roshan Ragel, [email](roshanr@eng.pdn.ac.lk)
+- Dr. Qinyi Li, [email](mailto:qinyi.li@griffith.edu.au)
+- Dr. Janaka Alawathugoda, [email](mailto:alawatugoda@eng.pdn.ac.lk)
+- Prof. Roshan Ragel, [email](mailto:roshanr@eng.pdn.ac.lk)
 
 #### Table of content
 
