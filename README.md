@@ -10,9 +10,9 @@ The aim of the project is implementing acryptographic scheme based on plain latt
 
 ## Team Members
 
-E/16/049, Harshana Bandara, [email](mailto:e16049@eng.pdn.ac.lk)
-E/16/134, Yasitha Herath, [email](mailto:e16134@eng.pdn.ac.lk) 
-E/16/388, Thushara Weerasundara, [email](mailto:e16388@eng.pdn.ac.lk) 
+- E/16/049, Harshana Bandara, [email](mailto:e16049@eng.pdn.ac.lk)
+- E/16/134, Yasitha Herath, [email](mailto:e16134@eng.pdn.ac.lk) 
+- E/16/388, Thushara Weerasundara, [email](mailto:e16388@eng.pdn.ac.lk) 
 
 ## Supervisors
 
