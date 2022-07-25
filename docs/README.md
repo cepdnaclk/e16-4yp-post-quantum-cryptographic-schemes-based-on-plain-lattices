@@ -9,18 +9,20 @@ title:
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
-# Project Title
+# Efficient Implementations of Post Quantum Cryptographic Schemes Based on Plain Lattices
+
 
 #### Team
 
-- eNumber, Name, [email](mailto:name@email.com)
-- eNumber, Name, [email](mailto:name@email.com)
-- eNumber, Name, [email](mailto:name@email.com)
+- E/16/049, Harshana Bandara, [email](e16049@eng.pdn.ac.lk)
+- E/16/134E/16/388, Yasitha Herath, [email](e16134@eng.pdn.ac.lk)
+- E/16/388, Thushara Weerasundara, [email](e16388@eng.pdn.ac.lk)
 
 #### Supervisors
 
-- Name, [email](mailto:name@eng.pdn.ac.lk)
-- Name, [email](mailto:name@eng.pdn.ac.lk)
+- Dr. Qinyi Li, [email](qinyi.li@griffith.edu.au)
+- Dr. Janaka Alawathugoda, [email](alawatugoda@eng.pdn.ac.lk)
+- Prof. Roshan Ragel, [email](roshanr@eng.pdn.ac.lk)
 
 #### Table of content
 
@@ -34,10 +36,6 @@ title:
 8. [Links](#links)
 
 ---
-
-DELETE THIS SAMPLE before publishing to GitHub Pages !!!
-This is a sample image, to show how to add images to your page. To learn more options, please refer [this](https://projects.ce.pdn.ac.lk/docs/faq/how-to-add-an-image/)
-![Sample Image](./images/sample.png)
 
 
 ## Abstract
