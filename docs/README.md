@@ -15,7 +15,7 @@ title: Efficient Implementation of Post Quantum Cryptography Schemes Based on Pl
 #### Team
 
 - E/16/049, Harshana Bandara, [email](e16049@eng.pdn.ac.lk)
-- E/16/388, Yasitha Herath, [email](e16134@eng.pdn.ac.lk)
+- E/16/134, Yasitha Herath, [email](e16134@eng.pdn.ac.lk)
 - E/16/388, Thushara Weerasundara, [email](e16388@eng.pdn.ac.lk)
 
 #### Supervisors
