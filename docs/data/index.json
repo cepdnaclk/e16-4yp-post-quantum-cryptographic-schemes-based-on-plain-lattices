@@ -1,37 +1,37 @@
 {
+    "title": "Efficient Implementations of Post Quantum Cryptographic Schemes Based on Plain Lattices",
     "team": [
-        {
-            "name": "Team Member Name 1",
-            "email": "email@eng.pdn.ac.lk",
-            "eNumber": "E/yy/xxx"
-        },
-        {
-            "name": "Team Member Name 2",
-            "email": "email@eng.pdn.ac.lk",
-            "eNumber": "E/yy/xxx"
-        },
-        {
-            "name": "Team Member Name 3",
-            "email": "email@eng.pdn.ac.lk",
-            "eNumber": "E/yy/xxx"
-        }
+    {
+        "name": "Harshana Bandara",
+        "email": "e16049@eng.pdn.ac.lk",
+        "eNumber": "E/16/049"
+    },
+    {
+        "name": "Yasitha Herath",
+        "email": "e16134@eng.pdn.ac.lk",
+        "eNumber": "E/16/134"
+    },
+    {
+        "name": "Thushara Weerasundara",
+        "email": "e16134@eng.pdn.ac.lk",
+        "eNumber": "E/16/388"
+    }
     ],
     "supervisors": [
-        {
-            "name": "Dr. Supervisor 1",
-            "email": "email@eng.pdn.ac.lk"
-        },
-        {
-            "name": "Dr. Supervisor 2",
-            "email": "email@eng.pdn.ac.lk"
-        }
+    {
+        "name": "Dr. Qinyi Li",
+        "email": "qinyi.li@griffith.edu.au"
+    },
+    {
+        "name": "Dr. Janaka Alawathugoda",
+        "email": "alawatugoda@eng.pdn.ac.lk"
+    },
+    {
+        "name": "Prof. Roshan Ragel",
+        "email": "roshanr@eng.pdn.ac.lk"
+    }
     ],
-    "media": [
-        {
-            "type": "youtube",
-            "title": "",
-            "url": "#"
-        }
-    ],
-    "tags": ["Final Year Projects"]
+    "tags": ["Cryptography", "Post Quantum Cryptography", "Learning with erros", "Lattice based cryptography", "Plain Lattices"]
 }
+
+
