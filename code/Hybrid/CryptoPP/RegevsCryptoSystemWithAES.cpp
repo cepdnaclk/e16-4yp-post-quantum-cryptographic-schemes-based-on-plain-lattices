@@ -221,7 +221,7 @@ void dumpRegevKeys()
 
     // filling the sT matrix
     fillWithRandomDtype(private_key.sT, 1, n, hashBytes, q);
-
+    //double alpha = 0.0127;
     double alpha = sqrt(double(n)) / q;
     double sigma = alpha / sqrt(2 * PI);
 
