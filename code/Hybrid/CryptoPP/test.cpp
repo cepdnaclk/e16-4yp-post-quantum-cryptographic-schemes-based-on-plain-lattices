@@ -15,11 +15,11 @@ using namespace std::chrono;
 // defining the parameters
 // #define q 2000
 dtype q = 2048;
-dtype k = 12;
+dtype k = 3;
 // #define n 30
 // #define m 270
-#define n 500
-#define m 1000
+#define n 2
+#define m 12 // resulting matrix A nxm => m = 2(nxk)
 #define e_min -1
 #define e_max 1
 #define PI 3.14
@@ -60,6 +60,34 @@ struct cipherText
     dtype **u;
     dtype **u_;
 };
+
+// resulting matrix A nxm => m = 2(nxk)
+void mergeMatrix(dtype **mat1, dtype **mat2, dtype **result)
+{   
+    int limit = n*k;
+    // Merge the two matrices
+    for (int i = 0; i < n; i++) 
+    {
+        for (int j = 0; j < limit; j++) 
+        {
+            // To store elements of matrix mat1
+            result[i][j] = mat1[i][j];
+ 
+            // To store elements of matrix mat2
+            result[i][j + limit] = mat2[i][j];
+        }
+    }
+
+
+    for (int i = 0; i < n; i++) 
+    {
+        for (int j = 0; j < m; j++)
+            cout << result[i][j] << " ";
+        cout << endl;
+    }
+}
+
+
 
 // genarate A matrix using a seed
 void gen_A(union un key, dtype **A)
@@ -196,22 +224,14 @@ void dumpRegevKeys()    ////////////////////////////////////////////////////////
 {
     struct privateKey private_key;
     struct publicKey public_key;
+    union un key;
 
     public_key.A = initMatrix(public_key.A, n, m); // public key A
-    dtype **A_ = initMatrix(A_, n, m); // trapdoor A_
+    dtype **A_ = initMatrix(A_, n, n*k); // trapdoor A_
     dtype **g = initMatrix(g, 1, k); // trapdoor g
     dtype **G = initMatrix(G, n, n*k); // trapdoor G
 
-    fillWithRandomDtype(A_, n, m, hashBytes, q); // A_ is filled with uniformly random values
-
-    for (int row = 0; row < n; ++row)
-    {
-        for (int col = 0; col < k; ++col)
-        {
-            G[row][k * row + col] = 1 << col; // G matrix is created
-        }
-    }
-
+    fillWithRandomDtype(A_, n, n*k, hashBytes, q); // A_ is filled with uniformly random values
 
 
     double alpha = sqrt(double(n)) / q;
@@ -221,13 +241,40 @@ void dumpRegevKeys()    ////////////////////////////////////////////////////////
     dtype **eT;
     eT = initMatrix(eT, 1, m);
 
-    private_key.R = initMatrix(private_key.R, m, n);
-    // dtype total = 0;
-    fillWithGaussianValues(sigma, q, eT, m, n, R);  // R pvt key filled by gaussian values
+    private_key.R = initMatrix(private_key.R, n*k, n*k);
+    //fillWithGaussianValues(sigma, q, eT, n*k, n*k, private_key.R);  // R pvt key filled by gaussian values
+    // need a gaussian value generator
+    dtype **A_R = initMatrix(A_R, n, n*k); // trapdoor A_*R mutiplication result holder
+    matMul(A_, private_key.R, A_R, n, m, numberBits, q); // get A_*R
 
-    dtype **A_R = initMatrix(A_R, n, m); // trapdoor A_*R mutiplication result holder
+    dtype **GsubA_R = initMatrix(GsubA_R, n, n*k); // to hold G - A_R
 
-    matMul(A_, R, A_R, n, m, numberBits, q);
+    for (int row = 0; row < n; ++row)
+    {
+        for (int col = 0; col < k; ++col)
+        {
+            G[row][k * row + col] = 1 << col; // G matrix is created
+        }
+    }
+
+    for (int row = 0; row < n; ++row)
+    {
+        for (int col = 0; col < n*k; ++col)
+        {
+            GsubA_R[row][col] = G[row][col] - A_R[row][col]; // G - A_R
+        }
+    }
+
+    for (int row = 0; row < n; ++row)
+    {
+        for (int col = 0; col < m; ++col)
+        {
+            GsubA_R[row][col] = G[row][col] - A_R[row][col]; // G - A_R
+        }
+    }
+
+    // merging matrixes A_ and GsubA_R 
+    mergeMatrix(A_, GsubA_R, public_key.A);
 /*
     for (int row = 0; row < n; ++row)
     {
