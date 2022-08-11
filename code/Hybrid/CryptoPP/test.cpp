@@ -61,33 +61,57 @@ struct cipherText
     dtype **u_;
 };
 
+void fillWithGaussianValuesSTD(double sigma, dtype q, dtype **mat, short row, short col) //, byte *hashBytes)
+{
+    // recalculating the hash
+    // byteHash(hashBytes, sizeof(hashBytes), hashBytes);
+    // genarating the seed value
+    uint32_t randomSeed = randombytes_random();
+    // randomSeed = (randomSeed << 8) | hashBytes[1];
+    // randomSeed = (randomSeed << 8) | hashBytes[2];
+    // randomSeed = (randomSeed << 8) | hashBytes[3];
+
+    mt19937 gen(randomSeed);
+    normal_distribution<double> gauss_dis(0, sigma);
+    // filling tge matrix
+    for (int rowIndex = 0; rowIndex < row; rowIndex++)
+    {
+        for (int colIndex = 0; colIndex < col; colIndex++)
+        {
+            double val = gauss_dis(gen);
+            if (val > 0.5)
+                val = val - 1.0;
+            else if (val < -0.5)
+                val = val + 1;
+            mat[rowIndex][colIndex] = (dtype)(val * q);
+        }
+    }
+}
+
 // resulting matrix A nxm => m = 2(nxk)
 void mergeMatrix(dtype **mat1, dtype **mat2, dtype **result)
-{   
-    int limit = n*k;
+{
+    int limit = n * k;
     // Merge the two matrices
-    for (int i = 0; i < n; i++) 
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < limit; j++) 
+        for (int j = 0; j < limit; j++)
         {
             // To store elements of matrix mat1
             result[i][j] = mat1[i][j];
- 
+
             // To store elements of matrix mat2
             result[i][j + limit] = mat2[i][j];
         }
     }
 
-
-    for (int i = 0; i < n; i++) 
+    for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
             cout << result[i][j] << " ";
         cout << endl;
     }
 }
-
-
 
 // genarate A matrix using a seed
 void gen_A(union un key, dtype **A)
@@ -179,7 +203,6 @@ void loadPrivateKey(privateKey *private_key)
     // filing sT matrix
     fillWithRandomDtype(private_key->sT, 1, n, hashBytes, q);
 
-
     // key for the A matrix
     union un key;
     key = loadKey(&fin, key);
@@ -220,19 +243,18 @@ struct cipherText loadRegevCipherText()
 }
 
 // function to genarate keys
-void dumpRegevKeys()    ///////////////////////////////////////////////////////////////////////////
+void dumpRegevKeys() ///////////////////////////////////////////////////////////////////////////
 {
     struct privateKey private_key;
     struct publicKey public_key;
     union un key;
 
     public_key.A = initMatrix(public_key.A, n, m); // public key A
-    dtype **A_ = initMatrix(A_, n, n*k); // trapdoor A_
-    dtype **g = initMatrix(g, 1, k); // trapdoor g
-    dtype **G = initMatrix(G, n, n*k); // trapdoor G
+    dtype **A_ = initMatrix(A_, n, n * k);         // trapdoor A_
+    dtype **g = initMatrix(g, 1, k);               // trapdoor g
+    dtype **G = initMatrix(G, n, n * k);           // trapdoor G
 
-    fillWithRandomDtype(A_, n, n*k, hashBytes, q); // A_ is filled with uniformly random values
-
+    fillWithRandomDtype(A_, n, n * k, hashBytes, q); // A_ is filled with uniformly random values
 
     double alpha = sqrt(double(n)) / q;
     double sigma = alpha / sqrt(2 * PI);
@@ -241,13 +263,13 @@ void dumpRegevKeys()    ////////////////////////////////////////////////////////
     dtype **eT;
     eT = initMatrix(eT, 1, m);
 
-    private_key.R = initMatrix(private_key.R, n*k, n*k);
-    //fillWithGaussianValues(sigma, q, eT, n*k, n*k, private_key.R);  // R pvt key filled by gaussian values
-    // need a gaussian value generator
-    dtype **A_R = initMatrix(A_R, n, n*k); // trapdoor A_*R mutiplication result holder
+    private_key.R = initMatrix(private_key.R, n * k, n * k);
+    // fillWithGaussianValues(sigma, q, eT, n*k, n*k, private_key.R);  // R pvt key filled by gaussian values
+    //  need a gaussian value generator
+    dtype **A_R = initMatrix(A_R, n, n * k);             // trapdoor A_*R mutiplication result holder
     matMul(A_, private_key.R, A_R, n, m, numberBits, q); // get A_*R
 
-    dtype **GsubA_R = initMatrix(GsubA_R, n, n*k); // to hold G - A_R
+    dtype **GsubA_R = initMatrix(GsubA_R, n, n * k); // to hold G - A_R
 
     for (int row = 0; row < n; ++row)
     {
@@ -259,7 +281,7 @@ void dumpRegevKeys()    ////////////////////////////////////////////////////////
 
     for (int row = 0; row < n; ++row)
     {
-        for (int col = 0; col < n*k; ++col)
+        for (int col = 0; col < n * k; ++col)
         {
             GsubA_R[row][col] = G[row][col] - A_R[row][col]; // G - A_R
         }
@@ -273,24 +295,23 @@ void dumpRegevKeys()    ////////////////////////////////////////////////////////
         }
     }
 
-    // merging matrixes A_ and GsubA_R 
+    // merging matrixes A_ and GsubA_R
     mergeMatrix(A_, GsubA_R, public_key.A);
-/*
-    for (int row = 0; row < n; ++row)
-    {
-        for (int col = 0; col < n*k; ++col)
+    /*
+        for (int row = 0; row < n; ++row)
         {
-           cout << G[row][col] << "    " ;
+            for (int col = 0; col < n*k; ++col)
+            {
+               cout << G[row][col] << "    " ;
+            }
+            cout << " " << endl;
         }
-        cout << " " << endl;
-    }
-*/
+    */
 
     // random seed for genarating A matrix
 
-
     private_key.sT = initMatrix(private_key.sT, 1, n);
-    // Don't have to do this 
+    // Don't have to do this
     // for (int i = 0; i < n; i++)
     // {
     //     private_key.sT[0][i] = genUniformRandomlong(0, q - 1);
@@ -307,7 +328,6 @@ void dumpRegevKeys()    ////////////////////////////////////////////////////////
 
     // filling the sT matrix
     fillWithRandomDtype(private_key.sT, 1, n, hashBytes, q);
-
 
     // for (int i = 0; i < m; i++)
     // {
@@ -330,8 +350,6 @@ void dumpRegevKeys()    ////////////////////////////////////////////////////////
     dumpKey(&fout, key);
     fout.close();
 }
-
-
 
 // Regev Encrypting Function
 cipherText encryptRegev(publicKey public_key, short *message_bit)
