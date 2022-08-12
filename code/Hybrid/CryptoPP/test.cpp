@@ -267,8 +267,9 @@ void dumpRegevKeys() ///////////////////////////////////////////////////////////
     // fillWithGaussianValues(sigma, q, eT, n*k, n*k, private_key.R);  // R pvt key filled by gaussian values
     //  need a gaussian value generator
     dtype **A_R = initMatrix(A_R, n, n * k);             // trapdoor A_*R mutiplication result holder
-    matMul(A_, private_key.R, A_R, n, m, numberBits, q); // get A_*R
-
+    cout << "multiplication starts" << endl;
+    matMul(A_, private_key.R, A_R, n, n*k, n*k, q); // get A_*R
+    cout << "multiplication done" << endl;
     dtype **GsubA_R = initMatrix(GsubA_R, n, n * k); // to hold G - A_R
 
     for (int row = 0; row < n; ++row)
@@ -287,16 +288,12 @@ void dumpRegevKeys() ///////////////////////////////////////////////////////////
         }
     }
 
-    for (int row = 0; row < n; ++row)
-    {
-        for (int col = 0; col < m; ++col)
-        {
-            GsubA_R[row][col] = G[row][col] - A_R[row][col]; // G - A_R
-        }
-    }
+
 
     // merging matrixes A_ and GsubA_R
+    cout << "merge starts" << endl;
     mergeMatrix(A_, GsubA_R, public_key.A);
+    cout << "merge done" << endl;
     /*
         for (int row = 0; row < n; ++row)
         {
