@@ -1,4 +1,8 @@
-/*Dual LWE CryptoSystem*/
+/*Dual LWE CryptoSystem
+
+g++ DualCryptoSystemWithAES.cpp -pthread -lsodium -lcryptopp -std=c++14 ../../RandomOracle/randomNumberGeneration.cpp ../../Matrix/Matrix.cpp ../../AESHelper/AESHelper.cpp ../../FileHelper/FileHelper.cpp
+
+*/
 
 
 // A is a public key

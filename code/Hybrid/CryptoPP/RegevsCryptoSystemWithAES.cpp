@@ -1,3 +1,10 @@
+/*
+
+compile: g++ RegevsCryptoSystemWithAES.cpp -pthread -lsodium -lcryptopp -std=c++14 ../../RandomOracle/randomNumberGeneration.cpp ../../Matrix/Matrix.cpp ../../AESHelper/AESHelper.cpp ../../FileHelper/FileHelper.cpp -o 388
+
+*/
+
+
 #include <iostream>
 #include <random>
 #include <ctime>
