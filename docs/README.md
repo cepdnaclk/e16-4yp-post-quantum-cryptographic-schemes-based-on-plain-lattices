@@ -62,7 +62,19 @@ This project proposes the use of plain lattices with learning with errors proble
 
 ## Experiment Setup and Implementation
 
+### Regev's LWE Implementation
+
+### Dual's LWE Implementation
+
+### Security and Randomness
+
+### Lattice Trapdoor Implementation
+
+### Random Oracle Model to Standard Model
+
 ## Results and Analysis
+
+### Parameter Optimization
 
 ## Conclusion
 
