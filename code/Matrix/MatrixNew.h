@@ -32,4 +32,6 @@ void matMulBin(int **matrix, boost::dynamic_bitset<> &vec, int rows, int cols, i
 
 void matMulBinBytes(dtype **matrix, byte **vec, int rows, int cols, dtype *result, dtype q);
 // mod oparation
+// mat sub operation
+void matSub(dtype **mat1, dtype **mat2, int rows, int cols, dtype **result, dtype q);
 dtype mod(dtype value, dtype mod_value);

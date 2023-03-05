@@ -290,6 +290,21 @@ void matMulBin(dtype **matrix, boost::dynamic_bitset<> &vec, int rows, int cols,
     th4.join();
 }
 
+void matSub(dtype **mat1, dtype **mat2, int rows, int cols, dtype **result, dtype q)
+{   
+
+
+    for (int i = 0; i < rows; ++i)
+    {
+        for (int j = 0; j < cols; ++j)
+        {
+             result[i][j] = mod(mat1[i][j] - mat2[i][j], q);
+        }
+       
+    }
+}
+
+
 void matMulBinByteSegment(dtype **mat1, byte **mat2, dtype **result, int row_start, int row_end, int cols, dtype q)
 {
     // multiply a part of the matrix.

@@ -26,7 +26,8 @@ void matMulAddSegmentLarge(dtype **mat1, dtype **mat2, dtype **mat3, dtype **res
 void matMulLarge(dtype **mat1, dtype **mat2, dtype **result, int r1, int c, int r2, dtype q);
 // multiply matricies
 void matMulAddLarge(dtype **mat1, dtype **mat2, dtype **mat3, dtype **result, int r1, int c, int r2, dtype q);
-
+// mat sub operation
+void matSub(dtype **mat1, dtype **mat2, int rows, int cols, dtype **result, dtype q);
 
 // mod oparation
 dtype mod(dtype value, dtype mod_value);

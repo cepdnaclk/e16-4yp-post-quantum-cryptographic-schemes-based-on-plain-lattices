@@ -209,3 +209,15 @@ void matMulAddLarge(dtype **mat1, dtype **mat2, dtype **mat3, dtype **result, in
     th3.join();
     th4.join();
 }
+
+void matSub(dtype **mat1, dtype **mat2, int rows, int cols, dtype **result, dtype q)
+{   
+    for (int i = 0; i < rows; ++i)
+    {
+        for (int j = 0; j < cols; ++j)
+        {
+             result[i][j] = mod(mat1[i][j] - mat2[i][j], q);
+        }
+       
+    }
+}
