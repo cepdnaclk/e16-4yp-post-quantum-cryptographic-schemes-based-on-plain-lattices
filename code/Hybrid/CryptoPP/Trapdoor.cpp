@@ -278,11 +278,32 @@ void dumpRegevKeys() ///////////////////////////////////////////////////////////
     cout << "multiplication done" << endl;
     dtype **GsubA_R = initMatrix(GsubA_R, n, n * k); // to hold G - A_R
 
+
+/*
+    in G, it looks like this.
+    | 1 2 4 8 .. 2^k 0, 0, 0,...0,0 0, 0, 0,...0,0 0, 0, 0,...0,0
+    | 0, 0, 0,...0,0,1 2 4 8 .. 2^k 0, 0, 0,...0,0 0, 0, 0,...0,0
+    | 0, 0, 0,...0,0,0, 0, 0,...0,0,1 2 4 8 .. 2^k 0, 0, 0,...0,0
+    | 0, 0, 0,...0,0,0, 0, 0,...0,0,0, 0, 0,...0,0,1 2 4 8 .. 2^k
+    |
+    |
+*/
+/*
+    row 0-->n
+    col 0-->n*k
+    if 0<=col-k*row<k:
+        [row][col] = 1<<(col-k*row)
+*/
     for (int row = 0; row < n; ++row)
     {
-        for (int col = 0; col < k; ++col)
+        for (int col = 0; col < n*k; ++col)
         {
-            G[row][k * row + col] = 1 << col; // G matrix is created
+            if (col-k*row >=0 && col-k*row<k){
+                G[row][col] = 1 << (col-k*row); // G matrix is created
+            }
+            else{
+                G[row][col] = 0;
+            }
         }
     }
 
